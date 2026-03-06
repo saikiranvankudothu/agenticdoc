@@ -1,0 +1,44 @@
+# ============================================================
+# Step 2 — Document Extraction Agent
+# Core PDF parsing & OCR dependencies
+# ============================================================
+
+# PDF parsing (primary)
+pymupdf>=1.24.0            # fitz — fast PDF text+bbox extraction
+
+# OCR fallback
+pytesseract>=0.3.10        # Python wrapper for Tesseract
+Pillow>=10.0.0             # Image processing (page rendering)
+opencv-python>=4.8.0       # Image pre-processing for OCR quality
+
+# Data handling
+numpy>=1.26.0
+pandas>=2.1.0
+pydantic>=2.5.0            # Typed data models for extraction outputs
+
+# Utilities
+tqdm>=4.66.0               # Progress bars for batch processing
+loguru>=0.7.0              # Structured logging
+python-dotenv>=1.0.0       # Env config
+
+# ============================================================
+# Step 3 — Layout Detection Agent (install separately)
+# ============================================================
+# layoutparser[layoutmodels]>=0.3.4
+# torch>=2.1.0
+# torchvision>=0.16.0
+# detectron2  # Install from: https://github.com/facebookresearch/detectron2
+
+# ============================================================
+# Steps 5–9 — Later agents
+# ============================================================
+# sentence-transformers>=2.6.0
+# faiss-cpu>=1.7.4
+# networkx>=3.2.0
+# neo4j>=5.14.0
+# langchain>=0.1.0
+# langchain-openai>=0.0.5
+# spacy>=3.7.0
+# fastapi>=0.109.0
+# uvicorn>=0.27.0
+# streamlit>=1.31.0
