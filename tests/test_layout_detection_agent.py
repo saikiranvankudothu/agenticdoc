@@ -151,17 +151,17 @@ class TestIsHeaderFooter(unittest.TestCase):
 
     def test_header(self):
         bbox = BoundingBox(0, 0, 595, 40)   # top 5% of 842
-        cls  = _is_header_footer(bbox, self.PAGE_H)
+        cls  = _is_header_footer(bbox, "text", self.PAGE_H)
         self.assertEqual(cls, RegionClass.HEADER)
 
     def test_footer(self):
         bbox = BoundingBox(0, 810, 595, 842)  # bottom 5%
-        cls  = _is_header_footer(bbox, self.PAGE_H)
+        cls  = _is_header_footer(bbox, "text", self.PAGE_H)
         self.assertEqual(cls, RegionClass.FOOTER)
 
     def test_body(self):
         bbox = BoundingBox(0, 200, 595, 400)
-        cls  = _is_header_footer(bbox, self.PAGE_H)
+        cls  = _is_header_footer(bbox, "text", self.PAGE_H)
         self.assertIsNone(cls)
 
 
@@ -174,7 +174,7 @@ class TestClassifyTextBlock(unittest.TestCase):
         return _classify_text_block(
             blk=blk, page_height=842.0, page_width=595.0,
             median_font_size=median_fs,
-            page_idx_in_doc=page_idx, seq=0)
+            page_idx_in_doc=page_idx, seq=0, nearby_table_caption=False)
 
     def test_caption_fig(self):
         self.assertEqual(self._classify("Fig. 3: Results of our experiment."),
@@ -197,12 +197,12 @@ class TestClassifyTextBlock(unittest.TestCase):
         self.assertEqual(cls, RegionClass.EQUATION)
 
     def test_abstract_first_page(self):
-        cls = self._classify("Abstract—This paper presents a novel framework.",
+        cls = self._classify("Abstract",
                               page_idx=0)
         self.assertEqual(cls, RegionClass.ABSTRACT)
 
     def test_abstract_not_on_later_page(self):
-        cls = self._classify("Abstract—This paper presents a novel framework.",
+        cls = self._classify("Abstract",
                               page_idx=2)
         # Should not be ABSTRACT on page 2
         self.assertNotEqual(cls, RegionClass.ABSTRACT)

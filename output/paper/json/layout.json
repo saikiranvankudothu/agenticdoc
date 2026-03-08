@@ -27,7 +27,7 @@
         },
         {
           "region_id": "62aa5c622c4c",
-          "region_class": "paragraph",
+          "region_class": "header",
           "bbox": {
             "x0": 178.04100036621094,
             "y0": 45.50126647949219,
@@ -180,7 +180,7 @@
         },
         {
           "region_id": "eb1f0235f6e6",
-          "region_class": "reference",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 510.14105224609375,
@@ -197,7 +197,7 @@
         },
         {
           "region_id": "aaee53921e65",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 531.4269409179688,
@@ -265,7 +265,7 @@
         },
         {
           "region_id": "6c947c83b6f1",
-          "region_class": "paragraph",
+          "region_class": "footer",
           "bbox": {
             "x0": 295.95001220703125,
             "y0": 730.7615356445312,
@@ -307,7 +307,7 @@
         },
         {
           "region_id": "10d405f6b89d",
-          "region_class": "paragraph",
+          "region_class": "header",
           "bbox": {
             "x0": 178.04100036621094,
             "y0": 45.50126647949219,
@@ -358,7 +358,7 @@
         },
         {
           "region_id": "fdab2688595d",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 116.50292205810547,
@@ -392,7 +392,7 @@
         },
         {
           "region_id": "e8b71caedbfa",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 164.3238983154297,
@@ -511,7 +511,7 @@
         },
         {
           "region_id": "099698770710",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 315.7059020996094,
@@ -562,7 +562,7 @@
         },
         {
           "region_id": "e06a0801deb0",
-          "region_class": "reference",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 431.21002197265625,
@@ -596,7 +596,7 @@
         },
         {
           "region_id": "6c99266e9176",
-          "region_class": "reference",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 504.47198486328125,
@@ -613,7 +613,7 @@
         },
         {
           "region_id": "f52522b39f49",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 513.493896484375,
@@ -630,7 +630,7 @@
         },
         {
           "region_id": "3f4c7190fe02",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 525.7579345703125,
@@ -766,7 +766,7 @@
         },
         {
           "region_id": "6f76cac2af9d",
-          "region_class": "paragraph",
+          "region_class": "footer",
           "bbox": {
             "x0": 295.95001220703125,
             "y0": 730.7615356445312,
@@ -808,7 +808,7 @@
         },
         {
           "region_id": "1acd5dd04643",
-          "region_class": "paragraph",
+          "region_class": "header",
           "bbox": {
             "x0": 178.04100036621094,
             "y0": 45.50126647949219,
@@ -876,7 +876,7 @@
         },
         {
           "region_id": "60474b48521b",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 104.54790496826172,
@@ -927,7 +927,7 @@
         },
         {
           "region_id": "6b5264fa5773",
-          "region_class": "paragraph",
+          "region_class": "table",
           "bbox": {
             "x0": 312.4362487792969,
             "y0": 247.3770751953125,
@@ -944,7 +944,7 @@
         },
         {
           "region_id": "029e37f5147e",
-          "region_class": "paragraph",
+          "region_class": "table",
           "bbox": {
             "x0": 312.4362487792969,
             "y0": 261.54925537109375,
@@ -978,7 +978,7 @@
         },
         {
           "region_id": "720e4c43f686",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 307.44000244140625,
             "y0": 324.9949035644531,
@@ -1063,7 +1063,7 @@
         },
         {
           "region_id": "2d8176f2ed8e",
-          "region_class": "reference",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 532.4170532226562,
@@ -1097,7 +1097,7 @@
         },
         {
           "region_id": "48720ac67d49",
-          "region_class": "paragraph",
+          "region_class": "title",
           "bbox": {
             "x0": 55.439998626708984,
             "y0": 553.7029418945312,
@@ -1182,7 +1182,7 @@
         },
         {
           "region_id": "6a6547a24897",
-          "region_class": "paragraph",
+          "region_class": "table",
           "bbox": {
             "x0": 307.0820007324219,
             "y0": 658.0345458984375,
@@ -1199,7 +1199,7 @@
         },
         {
           "region_id": "11fb94d9a82f",
-          "region_class": "paragraph",
+          "region_class": "footer",
           "bbox": {
             "x0": 295.95001220703125,
             "y0": 730.7615356445312,
