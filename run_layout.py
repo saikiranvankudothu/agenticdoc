@@ -25,7 +25,7 @@ Chains: Agent 1 (Extraction) → Agent 2 (Layout Detection)
 Usage
 -----
     # Full pipeline from PDF:
-    python run_layout.py --pdf path/to/paper.pdf
+    python run_layout.py --pdf pdf/paper.pdf
 
     # Use existing extraction JSON (skip Agent 1):
     python run_layout.py --extraction-json output/doc_id/json/extraction.json
@@ -36,7 +36,7 @@ Usage
     python run_layout.py --pdf paper.pdf --backend dit
 
     # Print region summary:
-    python run_layout.py --pdf paper.pdf --print-regions
+    python run_layout.py --pdf pdf/paper.pdf --print-regions
 
 Outputs
 -------

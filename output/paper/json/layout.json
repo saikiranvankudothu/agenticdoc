@@ -1,7 +1,7 @@
 {
   "doc_id": "paper",
-  "source_path": "C:\\Users\\saiki\\Downloads\\agenticdoc\\paper.pdf",
-  "total_pages": 5,
+  "source_path": "C:\\Users\\saiki\\Downloads\\agenticdoc\\pdf\\paper.pdf",
+  "total_pages": 3,
   "pages": [
     {
       "page_index": 0,
@@ -9,86 +9,103 @@
       "height": 792.0,
       "regions": [
         {
+          "region_id": "1dd87e2e7e3c",
+          "region_class": "figure",
+          "bbox": {
+            "x0": 0.0,
+            "y0": 0.0,
+            "x1": 612.0,
+            "y1": 45.50126647949219
+          },
+          "page_index": 0,
+          "confidence": 0.95,
+          "backend": "heuristic",
+          "text_content": null,
+          "source_block_ids": [
+            "b43f1b79b7a6"
+          ]
+        },
+        {
           "region_id": "62aa5c622c4c",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 70.90299987792969,
-            "y0": 53.09867858886719,
-            "x1": 541.0989379882812,
-            "y1": 132.8000030517578
+            "x0": 178.04100036621094,
+            "y0": 45.50126647949219,
+            "x1": 418.8427429199219,
+            "y1": 57.16654968261719
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "Agent Orchestrated Multimodal Academic Knowledge Extraction via Hybrid Vector Graph Retrieval",
+          "text_content": "Information-Flow-Aware KV Recomputation for Long Context",
           "source_block_ids": [
             "08824b22e9a4"
           ]
         },
         {
-          "region_id": "a08f30ed0c9d",
-          "region_class": "paragraph",
+          "region_id": "0ddc07cdd50c",
+          "region_class": "figure",
           "bbox": {
-            "x0": 62.629005432128906,
-            "y0": 150.0939178466797,
-            "x1": 552.858642578125,
-            "y1": 185.61709594726562
+            "x0": 0.0,
+            "y0": 57.16654968261719,
+            "x1": 612.0,
+            "y1": 234.25502014160156
+          },
+          "page_index": 0,
+          "confidence": 0.95,
+          "backend": "heuristic",
+          "text_content": null,
+          "source_block_ids": [
+            "75cc57d7f1a7"
+          ]
+        },
+        {
+          "region_id": "a08f30ed0c9d",
+          "region_class": "caption",
+          "bbox": {
+            "x0": 54.893001556396484,
+            "y0": 234.25502014160156,
+            "x1": 543.011474609375,
+            "y1": 274.9475402832031
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "V. Sai Kiran, M. Vineela, T. Karthik, Ramdas Kapila Department of Computer Science and Engineering (Data Science), B. V. Raju Institute of Technology, Telangana, India 22211a67b8@bvrit.ac.in, 22211a6767@bvrit.ac.in, 22211a67b2@bvrit.ac.in, kapilaramdas@gmail.com",
+          "text_content": "Figure 1. Context chunks are prefetched independently using chunk-local RoPE. At inference time, retrieved chunks are concatenated with the prompt, global RoPE positions are reconstructed, and prompt-conditioned attention norms are used to select high-impact tokens for full-context KV recomputation. The recomputed KV states are concatenated with cached chunks, restoring cross-chunk interactions. An optional chunk reordering step places more informative chunks closer to the prompt.",
           "source_block_ids": [
             "6b91ed8c5a32"
           ]
         },
         {
-          "region_id": "d9f4872f2b43",
-          "region_class": "list",
-          "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 218.7276153564453,
-            "x1": 563.0299072265625,
-            "y1": 240.64523315429688
-          },
-          "page_index": 0,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "• An agent-orchestrated multimodal document intelligence architecture for academic knowledge extraction.",
-          "source_block_ids": [
-            "158db27fd3f6"
-          ]
-        },
-        {
           "region_id": "ec2685348823",
-          "region_class": "abstract",
+          "region_class": "paragraph",
           "bbox": {
-            "x0": 48.96400451660156,
-            "y0": 219.40113830566406,
-            "x1": 300.0245666503906,
-            "y1": 428.4456481933594
+            "x0": 55.082000732421875,
+            "y0": 296.0985412597656,
+            "x1": 291.18487548828125,
+            "y1": 487.4314880371094
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "Abstract —Academic documents contain structured text, fig- ures, tables, equations, and cross-referenced sections. Conven- tional OCR-based and text-only retrieval systems flatten docu- ment structure and fail to model explicit scholarly relationships, limiting their effectiveness for academic question answering. In this work, we develop an agent orchestrated multimodal document intelligence framework that integrates layout-aware extraction, academic knowledge graph construction, and hybrid vector-Graph retrieval. Specialized agents perform multimodal alignment, semantic role classification, and structured knowledge graph generation. Retrieved evidence is fused from semantic vector search and relational graph traversal to support grounded and explainable scholarly reasoning. We implemented a modular prototype and evaluated it qualitatively against OCR only and text based RAG baselines, demonstrating improved structural grounding and relational query resolution. A quantitative bench- marking study is planned as future work. Index Terms —Multimodal Document Intelligence, Agent- Orchestrated Systems, Academic Knowledge Extraction, Knowl- edge Graphs, Hybrid Vector–Graph Retrieval, Retrieval- Augmented Generation",
+          "text_content": "query–token affinity, and effective information flow, by iden- tifying tokens that are structurally positioned to propagate information under the global causal attention induced by retrieval and decoding. Crucially, this property holds only when attention norms are computed under a RoPE order- ing consistent with inference-time decoding, using a global positional reconstruction of retrieved chunks; chunk-local or mismatched positional configurations yield unstable and misleading token rankings. Building on this insight, we further propose a retrieved-chunk reordering strategy based on identified information-flow–critical tokens, improving the effectiveness of downstream attention and providing additional validation of our information-flow perspective. Extensive experiments on both LLM and VLM benchmarks show that our approach consistently outperforms existing recomputation methods under comparable budgets.",
           "source_block_ids": [
             "63f4b24e04df"
           ]
         },
         {
           "region_id": "94db7a9a9fad",
-          "region_class": "list",
+          "region_class": "paragraph",
           "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 242.6376495361328,
-            "x1": 563.0325927734375,
-            "y1": 276.5112609863281
+            "x0": 327.3659973144531,
+            "y0": 296.0985412597656,
+            "x1": 541.4415893554688,
+            "y1": 320.05950927734375
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "• A structured academic knowledge graph schema grounded in layout-aligned entities and scholarly relationships.",
+          "text_content": "tive information flow under the global causal attention graph.",
           "source_block_ids": [
             "aede1d4733a5"
           ]
@@ -97,15 +114,15 @@
           "region_id": "b5f5b80a2b1d",
           "region_class": "list",
           "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 278.5036315917969,
-            "x1": 563.0299072265625,
-            "y1": 300.4212341308594
+            "x0": 318.8970031738281,
+            "y0": 326.8015441894531,
+            "x1": 543.1488647460938,
+            "y1": 374.6715087890625
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "• A hybrid retrieval strategy combining semantic similarity with relational graph traversal.",
+          "text_content": "• We show that reliable recomputation target selection requires an inference-consistent RoPE ordering , and introduce a global positional reconstruction of retrieved chunks to enable stable and meaningful token ranking.",
           "source_block_ids": [
             "c3e12812c628"
           ]
@@ -114,100 +131,83 @@
           "region_id": "ce94567d18d4",
           "region_class": "list",
           "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 302.4136047363281,
-            "x1": 563.030029296875,
-            "y1": 324.3312072753906
+            "x0": 318.8970031738281,
+            "y0": 381.41455078125,
+            "x1": 543.0936889648438,
+            "y1": 441.239501953125
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "• A qualitative comparative evaluation against OCR based and text-only RAG baselines.",
+          "text_content": "• Building on the identified information-flow–critical tokens, we further propose a retrieved-chunk reorder- ing strategy that improves downstream attention ef- fectiveness, providing additional validation of our information-flow perspective.",
           "source_block_ids": [
             "99b1ddd4c5d7"
           ]
         },
         {
           "region_id": "3b3ae1e66423",
-          "region_class": "paragraph",
+          "region_class": "list",
           "bbox": {
-            "x0": 382.125,
-            "y0": 337.2055969238281,
-            "x1": 492.8973083496094,
-            "y1": 347.168212890625
+            "x0": 318.8970031738281,
+            "y0": 447.9825439453125,
+            "x1": 541.6083984375,
+            "y1": 495.8525085449219
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "II. P ROBLEM S TATEMENT",
+          "text_content": "• We evaluate our approach on both LLM and VLM RAG benchmarks, demonstrating consistent improvements over existing selective recomputation methods under comparable efficiency budgets.",
           "source_block_ids": [
             "d157d4153800"
-          ]
-        },
-        {
-          "region_id": "eb1f0235f6e6",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 355.23358154296875,
-            "x1": 563.0355834960938,
-            "y1": 545.9910278320312
-          },
-          "page_index": 0,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Despite advances in document intelligence and retrieval- augmented generation, no unified framework currently inte- grates layout-preserving multimodal extraction, explicit aca- demic entity modeling, and hybrid semantic–relational re- trieval within a single architecture. Academic documents require joint reasoning over textual content, visual layout, and scholarly relationships such as citations, methodological dependencies, and dataset result as- sociations. However, existing systems typically address only one or two of these aspects in isolation. The core challenge we address is designing an integrated framework that simultaneously: (i) preserves multimodal document structure, (ii) constructs an explicit academic knowledge representation, and (iii) sup- ports hybrid retrieval that balances semantic similarity with relational reasoning.",
-          "source_block_ids": [
-            "7f0198f46917"
           ]
         },
         {
           "region_id": "87213f5aee7b",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 135.61900329589844,
-            "y0": 447.2676086425781,
-            "x1": 213.37521362304688,
-            "y1": 457.230224609375
+            "x0": 54.97200012207031,
+            "y0": 493.35955810546875,
+            "x1": 291.0933532714844,
+            "y1": 648.8264770507812
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "I. I NTRODUCTION",
+          "text_content": "While our primary focus is retrieval-augmented generation with precomputed document-level KV caches, the proposed chunking-and-recompute strategy also applies when such caches are unavailable. In non-RAG long-context inference, the input can be partitioned into chunks whose KV caches are computed independently, followed by selective recom- putation under the global causal mask. This yields two practical benefits: (i) in multi-query or interactive settings, prefetched KV caches can be stored and reused to amor- tize prefilling cost, and (ii) chunk-wise prefilling naturally enables parallel computation across multiple GPUs, since chunks are processed independently prior to recombination and recomputation.",
           "source_block_ids": [
             "9742d85aee90"
           ]
         },
         {
-          "region_id": "a29639315d06",
-          "region_class": "paragraph",
+          "region_id": "eb1f0235f6e6",
+          "region_class": "reference",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 467.31060791015625,
-            "x1": 300.02197265625,
-            "y1": 718.8521728515625
+            "x0": 307.44000244140625,
+            "y0": 510.14105224609375,
+            "x1": 390.55255126953125,
+            "y1": 525.6947631835938
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "Academic documents integrate structured text, figures, ta- bles, equations, and citation networks into a tightly interdepen- dent format. Effective scholarly question answering requires preserving document structure while capturing semantic and relational dependencies across these heterogeneous elements. In reality, current methods only partially solve these prob- lems. OCR based pipelines often flatten layout and discard structural cues. Text-only Retrieval Augmented Generation (RAG) systems improve semantic retrieval, but they still operate on unstructured text chunks without explicit scholarly relationship modeling. Knowledge graph–based systems help with relational reasoning, yet semantic recall can drop when they are used in isolation. To overcome these limitations, we propose an agent- orchestrated multimodal document intelligence framework that integrates layout-aware extraction, academic knowledge graph construction, and hybrid semantic relational retrieval within a unified architecture. The system decomposes document under- standing into specialized agents, enabling modular processing and structured scholarly reasoning. The main contributions of this work are:",
+          "text_content": "2. Related Work",
           "source_block_ids": [
-            "1af8b51af0e2"
+            "7f0198f46917"
           ]
         },
         {
           "region_id": "aaee53921e65",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 392.6510009765625,
-            "y0": 558.865478515625,
-            "x1": 482.36834716796875,
-            "y1": 568.8280639648438
+            "x0": 307.44000244140625,
+            "y0": 531.4269409179688,
+            "x1": 446.7371520996094,
+            "y1": 544.3882446289062
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "III. R ELATED W ORK",
+          "text_content": "2.1. KV Eviction & Compression",
           "source_block_ids": [
             "9c1d75a8f44a"
           ]
@@ -216,17 +216,68 @@
           "region_id": "f09ece78e015",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 576.8934326171875,
-            "x1": 563.0355834960938,
-            "y1": 718.85205078125
+            "x0": 307.44000244140625,
+            "y0": 550.4385375976562,
+            "x1": 543.0971069335938,
+            "y1": 717.8604736328125
           },
           "page_index": 0,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "By transforming scanned pages into machine-readable text, OCR-based systems [10] have been crucial to the digitization of documents. Nevertheless, the majority of OCR pipelines handle documents as flat text streams, eliminating layout details like figure placement, section structure, and caption alignment. Their capacity to bolster more complex scholarly reasoning is hampered by this loss of structural context. To more accurately depict visually rich documents, layout- aware models like LayoutLM and associated multimodal trans- formers integrate spatial features. Performance on tasks like entity extraction and document classification is enhanced by these models. However, they are not specifically made to",
+          "text_content": "KV eviction and compression methods reduce long-context inference cost by limiting the size or precision of KV caches during decoding. Eviction-based approaches such as H2O ( Zhang et al. , 2023 ) and StreamingLLM ( Xiao et al. , 2023 ) discard cached KV states based on heuristics, includ- ing recency or attention importance. Compression methods such as Pyramid KV ( Cai et al. , 2024 ) and memorization- based approaches ( Wu et al. , 2022 ) approximate histori- cal KV representations through hierarchical compression or summary memory. These methods primarily target the memory footprint and access cost during autoregressive decoding. In contrast, our work addresses the prefilling bottleneck under chunk-wise processing, where KV states are computed independently, and cross-chunk interactions",
           "source_block_ids": [
             "1806e630227e"
+          ]
+        },
+        {
+          "region_id": "a29639315d06",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 54.97200012207031,
+            "y0": 654.7535400390625,
+            "x1": 230.263916015625,
+            "y1": 666.7584838867188
+          },
+          "page_index": 0,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "We summarize our contributions as follows.",
+          "source_block_ids": [
+            "1af8b51af0e2"
+          ]
+        },
+        {
+          "region_id": "d9f4872f2b43",
+          "region_class": "list",
+          "bbox": {
+            "x0": 66.89700317382812,
+            "y0": 681.9445190429688,
+            "x1": 291.0970153808594,
+            "y1": 717.8604736328125
+          },
+          "page_index": 0,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "• We propose a simple and effective attention- norm–based criterion from the query to context to- kens that jointly captures semantic relevance and effec-",
+          "source_block_ids": [
+            "158db27fd3f6"
+          ]
+        },
+        {
+          "region_id": "6c947c83b6f1",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 295.95001220703125,
+            "y0": 730.7615356445312,
+            "x1": 300.9313049316406,
+            "y1": 742.7664794921875
+          },
+          "page_index": 0,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "2",
+          "source_block_ids": [
+            "c4fc1f6f00bd"
           ]
         }
       ],
@@ -238,103 +289,86 @@
       "height": 792.0,
       "regions": [
         {
+          "region_id": "4faa67333fb7",
+          "region_class": "figure",
+          "bbox": {
+            "x0": 0.0,
+            "y0": 0.0,
+            "x1": 612.0,
+            "y1": 45.50126647949219
+          },
+          "page_index": 1,
+          "confidence": 0.95,
+          "backend": "heuristic",
+          "text_content": null,
+          "source_block_ids": [
+            "a07db44652c8"
+          ]
+        },
+        {
           "region_id": "10d405f6b89d",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 51.35444641113281,
-            "x1": 300.0219421386719,
-            "y1": 277.5791320800781
+            "x0": 178.04100036621094,
+            "y0": 45.50126647949219,
+            "x1": 418.8427429199219,
+            "y1": 57.16654968261719
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "model higher-level scholarly relationships; instead, they are typically optimized for predictions at the region or token level. By incorporating semantic retrieval into language gener- ation, Retrieval-Augmented Generation (RAG) [1] enhances factual grounding. The majority of RAG systems work over unstructured chunks and do not specifically represent academic dependencies like method–result associations or citation links, despite their effectiveness in retrieving pertinent text passages. Relational reasoning and enhanced explainability are sup- ported by the structured representation of entities and their relationships made possible by knowledge graph approaches [8]. On the other hand, graph-based systems may have poor semantic recall when used alone, especially when lexical variation is present. In intelligent systems, agent-based architectures improve coordination and modularity. Despite these benefits, it is uncommon for current methods to integrate hybrid vector- graph retrieval, multimodal extraction, and explicit scholarly knowledge representation into a single framework.",
+          "text_content": "Information-Flow-Aware KV Recomputation for Long Context",
           "source_block_ids": [
             "717d888e4ca0"
-          ]
-        },
-        {
-          "region_id": "6c99266e9176",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 51.35542297363281,
-            "x1": 563.03564453125,
-            "y1": 254.29415893554688
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "explanatory text. In this step, contextual meaning is added to structural information. 3) Knowledge Structuring Agent: The Knowledge Struc- turing Agent creates an academic knowledge graph in which scholarly relationships are represented as edges and entities (Document, Section, Concept, Method, Dataset, Result, Fig- ure, Table) as nodes. To guarantee traceability and grounded retrieval, provenance metadata is kept. 4) Hybrid Storage and Retrieval Module: We keep a graph index for relational traversal and a vector index for semantic similarity search. When retrieving evidence, the system can combine structured reasoning and semantic matching thanks to this dual representation. 5) Retrieval Augmented Query Engine: When a query is received, the engine gathers information from both indices, combines the findings, and gives a language model for re- sponse generation grounded context.",
-          "source_block_ids": [
-            "64ae39c89360"
-          ]
-        },
-        {
-          "region_id": "3f4c7190fe02",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 266.03411865234375,
-            "x1": 463.8278503417969,
-            "y1": 275.9967041015625
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "C. Workflow for Agent Orchestration",
-          "source_block_ids": [
-            "e0ad6092c1ed"
-          ]
-        },
-        {
-          "region_id": "4b772c40cc08",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 282.62158203125,
-            "x1": 563.0354614257812,
-            "y1": 328.44915771484375
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Task sequencing and agent-to-agent data exchange are man- aged by an orchestration layer. When intermediate outputs need to be refined, the pipeline allows for selective reprocess- ing and modular execution.",
-          "source_block_ids": [
-            "f855b5544fdf"
           ]
         },
         {
           "region_id": "17294395846a",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 88.66600036621094,
-            "y0": 289.32452392578125,
-            "x1": 260.3258361816406,
-            "y1": 299.2871398925781
+            "x0": 55.082000732421875,
+            "y0": 67.81756591796875,
+            "x1": 290.68701171875,
+            "y1": 103.73351287841797
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "IV. P ROPOSED S YSTEM A RCHITECTURE",
+          "text_content": "are lost. Rather than shrinking or discarding KV caches, we retain token-level KV states and selectively recompute a small subset of tokens to restore global information flow.",
           "source_block_ids": [
             "623da626611a"
+          ]
+        },
+        {
+          "region_id": "425202c62e72",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.0820007324219,
+            "y0": 67.81756591796875,
+            "x1": 542.6870727539062,
+            "y1": 151.5535125732422
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "where d h is the per-head dimension. In practice, inference consists of a prefilling phase that computes KV states for an input context of length L in a single forward pass, followed by an iterative decoding phase that appends one new KV pair per generated token. In long-context question answering, where the generated answer is short, inference cost is often dominated by the prefilling stage.",
+          "source_block_ids": [
+            "ccf680846ce3"
           ]
         },
         {
           "region_id": "fdab2688595d",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 306.3780822753906,
-            "x1": 131.70338439941406,
-            "y1": 316.3406677246094
+            "x0": 55.439998626708984,
+            "y0": 116.50292205810547,
+            "x1": 186.07958984375,
+            "y1": 129.46426391601562
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "A. System Overview",
+          "text_content": "2.2. Chunked Input Processing",
           "source_block_ids": [
             "cc2852300425"
           ]
@@ -343,49 +377,355 @@
           "region_id": "065cf9815941",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 322.89453125,
-            "x1": 300.0218811035156,
-            "y1": 560.7179565429688
+            "x0": 55.082000732421875,
+            "y0": 135.5135498046875,
+            "x1": 291.09796142578125,
+            "y1": 302.93548583984375
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "We break down academic document understanding into coordinated agents that are each in charge of multimodal extraction, semantic interpretation, knowledge construction, and retrieval rather than treating it as a single end-to-end task. This division facilitates systematic reasoning across diverse elements like text, figures, and tables while assisting in man- aging the structural complexity of academic PDFs. Sequential processing is used for documents. First, layout- aware extraction maintains spatial and structural data. After that, roles are assigned and cross-modal relationships are captured by semantic analysis. An academic knowledge graph that clearly depicts entities and their relationships within the document is created using the structured output. We use a dual-index design for retrieval. Structured entities and relations are stored in a graph representation, whereas text segments are embedded in a semantic vector space. Both indices are consulted during query processing, and the results are combined to produce grounded answers. The process from document ingestion to retrieval-augmented answer generation is shown in Figure 1.",
+          "text_content": "Chunked input processing has been explored to extend effec- tive context length beyond the model’s native window. Con- text Expansion with Parallel Encoding (CEPE) ( Yen et al. , 2024 ) encodes long contexts in parallel using a lightweight encoder and enables a decoder to attend to chunk repre- sentations via cross-attention. A key limitation of such approaches is that chunks are encoded independently, and cross-chunk interactions are not explicitly modeled within the chunk representations. Our method instead targets inter- action across chunks by selectively recomputing KV states under the full context. Moreover, CEPE requires addi- tional training to align the parallel encoder with the decoder, whereas our approach operates in a plug-and-play manner at inference time without modifying the pretrained model.",
           "source_block_ids": [
             "0a7751e8be29"
+          ]
+        },
+        {
+          "region_id": "e8b71caedbfa",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 164.3238983154297,
+            "x1": 484.91375732421875,
+            "y1": 177.28524780273438
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "3.2. Rotary Positional Embedding (RoPE)",
+          "source_block_ids": [
+            "ef45618a7832"
+          ]
+        },
+        {
+          "region_id": "9080a0fc8dc2",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 183.33453369140625,
+            "x1": 543.093505859375,
+            "y1": 231.2045135498047
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Rotary positional embedding (RoPE) encodes positional information by applying position-dependent rotations to queries and keys. For vectors decomposed into 2D sub- spaces, RoPE applies",
+          "source_block_ids": [
+            "faec026a8931"
+          ]
+        },
+        {
+          "region_id": "dae21f6b2dff",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 341.6440124511719,
+            "y0": 233.20089721679688,
+            "x1": 491.4939880371094,
+            "y1": 270.3813171386719
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "RoPE( x , t ) = � cos( θ i t ) − sin( θ i t ) sin( θ i t ) cos( θ i t )",
+          "source_block_ids": [
+            "095427aca0b3"
+          ]
+        },
+        {
+          "region_id": "10c26b309662",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 491.5039367675781,
+            "y0": 233.20089721679688,
+            "x1": 542.1090087890625,
+            "y1": 270.3813171386719
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "� x , (3)",
+          "source_block_ids": [
+            "19eaceef509c"
+          ]
+        },
+        {
+          "region_id": "540469ad963f",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.0819396972656,
+            "y0": 271.9245910644531,
+            "x1": 484.1273193359375,
+            "y1": 283.9295349121094
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "where the angular frequencies are defined as",
+          "source_block_ids": [
+            "43c816bd217a"
+          ]
+        },
+        {
+          "region_id": "53c70fedd3e7",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 347.6119384765625,
+            "y0": 292.6640930175781,
+            "x1": 480.1424865722656,
+            "y1": 310.8606872558594
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "θ i = 10000 − 2 i/d , i = 0 , . . . , d",
+          "source_block_ids": [
+            "c6947755792d"
+          ]
+        },
+        {
+          "region_id": "5c4171bae03e",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 475.0639953613281,
+            "y0": 297.6705322265625,
+            "x1": 542.1072998046875,
+            "y1": 323.2740783691406
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "2 − 1 . (4)",
+          "source_block_ids": [
+            "0a5554af261f"
+          ]
+        },
+        {
+          "region_id": "099698770710",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 315.7059020996094,
+            "x1": 155.61392211914062,
+            "y1": 328.667236328125
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "2.3. KV Recomputation",
+          "source_block_ids": [
+            "9fe624051d70"
+          ]
+        },
+        {
+          "region_id": "a89ff685be33",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 321.2305603027344,
+            "x1": 543.0935668945312,
+            "y1": 416.9215087890625
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Lower-index dimensions correspond to higher frequencies and are more sensitive to positional differences, while higher-index dimensions encode lower-frequency compo- nents. Consequently, the effectiveness of attention interac- tions depends on the absolute positions at which tokens are placed, which becomes particularly relevant when KV states are computed independently and later reused or recomputed under different positional assignments.",
+          "source_block_ids": [
+            "bd648a3b6c15"
+          ]
+        },
+        {
+          "region_id": "144ab83dcdf7",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 334.716552734375,
+            "x1": 291.1810607910156,
+            "y1": 490.1835021972656
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "KV recomputation methods aim to recover accuracy when reusing independently prefetched KV caches by selectively recomputing a small subset of tokens under the full context. CacheBlend identifies tokens whose cached KV states devi- ate most from full-context attention, while EPIC mitigates positional mismatch by recomputing fixed chunk-initial to- kens. These approaches select recomputation targets based on token-level deviation or positional heuristics, without explicitly modeling how information propagates to gener- ated tokens. In contrast, our method selects tokens based on their capacity to transmit information across chunks, jointly accounting for semantic relevance and positional influence under inference-time attention geometry.",
+          "source_block_ids": [
+            "822429da4b42"
+          ]
+        },
+        {
+          "region_id": "e06a0801deb0",
+          "region_class": "reference",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 431.21002197265625,
+            "x1": 359.24188232421875,
+            "y1": 446.76373291015625
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "4. Method",
+          "source_block_ids": [
+            "5bd01a55db02"
+          ]
+        },
+        {
+          "region_id": "0c7ec6dac4f0",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 452.85455322265625,
+            "x1": 543.0948486328125,
+            "y1": 500.7244873046875
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "In this section, we introduce our method for selecting re- computation targets by jointly considering token semantic relevance and positional influence, with the goal of facilitat- ing information propagation during decoding.",
+          "source_block_ids": [
+            "e2542c1387b2"
+          ]
+        },
+        {
+          "region_id": "6c99266e9176",
+          "region_class": "reference",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 504.47198486328125,
+            "x1": 128.94056701660156,
+            "y1": 520.0256958007812
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "3. Preliminary",
+          "source_block_ids": [
+            "64ae39c89360"
+          ]
+        },
+        {
+          "region_id": "f52522b39f49",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 513.493896484375,
+            "x1": 453.9800109863281,
+            "y1": 526.4552001953125
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "4.1. Input Chunking and Prefilling",
+          "source_block_ids": [
+            "c4cf0ee294cc"
+          ]
+        },
+        {
+          "region_id": "3f4c7190fe02",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 525.7579345703125,
+            "x1": 116.869384765625,
+            "y1": 538.71923828125
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "3.1. KV Cache",
+          "source_block_ids": [
+            "e0ad6092c1ed"
+          ]
+        },
+        {
+          "region_id": "e147050096d9",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 532.5055541992188,
+            "x1": 541.7927856445312,
+            "y1": 604.2864990234375
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Let the input consist of N tokens, which we partition into K disjoint chunks { C 1 , . . . , C K } . Each chunk serves as a basic unit for prefilling and can correspond to a naturally independent segment (e.g., a document or an image), or a contiguous partition of a single long input (e.g., a text sequence or a visual token grid).",
+          "source_block_ids": [
+            "14ee9cb6496a"
+          ]
+        },
+        {
+          "region_id": "4b772c40cc08",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 54.97200012207031,
+            "y0": 544.7685546875,
+            "x1": 291.1834716796875,
+            "y1": 592.6394653320312
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "We consider an autoregressive Transformer decoder. Let h ℓ t ∈ R d denote the hidden state at layer ℓ and position t . For each attention head, keys and values are computed as linear projections of the hidden states,",
+          "source_block_ids": [
+            "f855b5544fdf"
           ]
         },
         {
           "region_id": "d6dbf5af615b",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 340.1890869140625,
-            "x1": 412.0821533203125,
-            "y1": 350.15167236328125
+            "x0": 106.29499816894531,
+            "y0": 600.3186645507812,
+            "x1": 290.1141662597656,
+            "y1": 614.6156616210938
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "D. Agent Independence",
+          "text_content": "k ℓ t = W ℓ K h ℓ t , v ℓ t = W ℓ V h ℓ t , (1)",
           "source_block_ids": [
             "086099d2a571"
+          ]
+        },
+        {
+          "region_id": "e241fdf96af0",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.44000244140625,
+            "y0": 610.2135620117188,
+            "x1": 543.0897827148438,
+            "y1": 717.8604736328125
+          },
+          "page_index": 1,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "During chunk-wise prefilling, each chunk is processed inde- pendently to compute its key–value (KV) cache. Within a chunk C i , positional indices are assigned locally: tokens are indexed from 0 to | C i | − 1 according to their order inside the chunk, regardless of their absolute position in the full input. Keys and queries are then computed using RoPE based on these chunk-local positions, and the resulting KV states are stored in the cache associated with C i . As a result, chunk-wise prefilling encodes KV states under chunk-local",
+          "source_block_ids": [
+            "77ab0d4ca03e"
           ]
         },
         {
           "region_id": "8feaf570ed68",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 356.77655029296875,
-            "x1": 563.0355834960938,
-            "y1": 462.38006591796875
+            "x0": 55.08201599121094,
+            "y0": 620.279541015625,
+            "x1": 225.8310089111328,
+            "y1": 632.2844848632812
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "To increase robustness, each agent makes decisions based on lightweight rules. When coverage is poor, the extraction agent turns on OCR fallback. By utilizing contextual cues, the Semantic Agent improves role assignments. The Knowledge Graph Agent provides confidence scores and verifies schema consistency.Based on the properties of the query, the Retrieval Agent dynamically chooses vector-based, graph-based, or hy- brid strategies during query processing. This regulated inde- pendence preserves interpretability while enhancing flexibility.",
+          "text_content": "where the head index is omitted for clarity.",
           "source_block_ids": [
             "fd5ad7dd566a"
           ]
@@ -394,119 +734,51 @@
           "region_id": "850faa696fff",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 345.52301025390625,
-            "y0": 474.29644775390625,
-            "x1": 529.4987182617188,
-            "y1": 484.2590637207031
+            "x0": 55.439998626708984,
+            "y0": 638.2125244140625,
+            "x1": 291.097900390625,
+            "y1": 698.0374755859375
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "V. M ETHODOLOGY AND I MPLEMENTATION",
+          "text_content": "During autoregressive decoding, to avoid recomputing keys and values for previously processed tokens, Transformer de- coders maintain a key–value (KV) cache that stores all past { k ℓ s , v ℓ s } s ≤ t at each layer. We denote the cached tensors up to position t by",
           "source_block_ids": [
             "95a233b098bc"
           ]
         },
         {
           "region_id": "c330b0c929e2",
-          "region_class": "paragraph",
+          "region_class": "equation",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 491.6484375,
-            "x1": 563.0355834960938,
-            "y1": 549.4320068359375
+            "x0": 102.45100402832031,
+            "y0": 705.4935302734375,
+            "x1": 290.1125793457031,
+            "y1": 727.0880737304688
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "We create an end-to-end pipeline with distinct intermediate steps to convert unstructured academic PDFs into knowledge that is query-ready. Before being sent to later components, the structured outputs from each stage are checked. We can keep an eye on processing quality and isolate errors.",
+          "text_content": "K ℓ ≤ t ∈ R t × d h , V ℓ ≤ t ∈ R t × d h , (2)",
           "source_block_ids": [
             "f60731ce51ee"
           ]
         },
         {
-          "region_id": "425202c62e72",
+          "region_id": "6f76cac2af9d",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 561.1719360351562,
-            "x1": 518.1837768554688,
-            "y1": 571.134521484375
+            "x0": 295.95001220703125,
+            "y0": 730.7615356445312,
+            "x1": 300.9313049316406,
+            "y1": 742.7664794921875
           },
           "page_index": 1,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "A. Step-Wise Processing Pipeline (Inputs/Outputs)",
+          "text_content": "3",
           "source_block_ids": [
-            "ccf680846ce3"
-          ]
-        },
-        {
-          "region_id": "099698770710",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 572.2869262695312,
-            "x1": 168.28602600097656,
-            "y1": 582.24951171875
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "B. Architectural Components",
-          "source_block_ids": [
-            "9fe624051d70"
-          ]
-        },
-        {
-          "region_id": "e8b71caedbfa",
-          "region_class": "list",
-          "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 577.2914428710938,
-            "x1": 563.0394897460938,
-            "y1": 647.1209716796875
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "• Step 1: PDF Parsing / Text Extraction Input: PDF pages. Output: text blocks B = { ( t i , b i , p i , s i ) } where t i denotes the extracted text, b i the bounding box, p i the page index, and s i optional style attributes such as font size or weight.",
-          "source_block_ids": [
-            "ef45618a7832"
-          ]
-        },
-        {
-          "region_id": "144ab83dcdf7",
-          "region_class": "list",
-          "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 588.6268920898438,
-            "x1": 300.0218811035156,
-            "y1": 718.8519897460938
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "1) Document Extraction Agent: The Document Extraction While maintaining spatial layout, the agent parses academic PDFs to extract text blocks, tables, figures, captions, and equa- tions.To ensure adequate coverage for processing downstream, an OCR fallback is activated when embedded text (such as scanned pages) is not complete. 2) Multimodal Semantic Understanding Agent: This agent finds cross-modal relationships and gives semantic roles to aligned document elements. Scholarly entities like concepts, methods, datasets, and results are extracted using transformer- based encoders, and figures and tables are connected to",
-          "source_block_ids": [
-            "822429da4b42"
-          ]
-        },
-        {
-          "region_id": "9080a0fc8dc2",
-          "region_class": "list",
-          "bbox": {
-            "x0": 321.94000244140625,
-            "y0": 649.0224609375,
-            "x1": 563.0370483398438,
-            "y1": 720.3460083007812
-          },
-          "page_index": 1,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "• Step 2: Layout Detection Input: rendered page images and/or PDF geometry. Output: layout regions R = { ( c j , r j , p j , γ j ) } where c j represents the region class (e.g., title, paragraph, table, figure, caption, equation), r j denotes the bounding box, and γ j is an associated confidence score.",
-          "source_block_ids": [
-            "faec026a8931"
+            "729c4e8ba624"
           ]
         }
       ],
@@ -518,273 +790,205 @@
       "height": 792.0,
       "regions": [
         {
-          "region_id": "1acd5dd04643",
-          "region_class": "caption",
+          "region_id": "a75ab3b14e2a",
+          "region_class": "figure",
           "bbox": {
-            "x0": 255.37399291992188,
-            "y0": 321.1385803222656,
-            "x1": 356.62615966796875,
-            "y1": 329.1086730957031
+            "x0": 0.0,
+            "y0": 0.0,
+            "x1": 612.0,
+            "y1": 45.50126647949219
           },
           "page_index": 2,
-          "confidence": 0.8,
+          "confidence": 0.95,
           "backend": "heuristic",
-          "text_content": "Fig. 1. Proposed Architecture.",
+          "text_content": null,
           "source_block_ids": [
-            "57316364a5ed"
+            "0e997f38a71d"
           ]
         },
         {
-          "region_id": "636c3d150e0a",
-          "region_class": "caption",
+          "region_id": "1acd5dd04643",
+          "region_class": "paragraph",
           "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 349.4465026855469,
-            "x1": 541.9147338867188,
-            "y1": 384.86004638671875
+            "x0": 178.04100036621094,
+            "y0": 45.50126647949219,
+            "x1": 418.8427429199219,
+            "y1": 57.16654968261719
           },
           "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "Algorithm 1 Text–Layout Alignment (Step 3) Require: Text blocks B , layout regions R , thresholds τ Ensure: Assignments A",
+          "text_content": "Information-Flow-Aware KV Recomputation for Long Context",
           "source_block_ids": [
-            "006ad7530e72"
+            "57316364a5ed"
           ]
         },
         {
           "region_id": "abcfd9a69710",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9639892578125,
-            "y0": 351.66302490234375,
-            "x1": 300.02142333984375,
-            "y1": 373.5805969238281
+            "x0": 55.082000732421875,
+            "y0": 67.81756591796875,
+            "x1": 289.7856140136719,
+            "y1": 91.77849578857422
           },
           "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "B. Text–Layout Alignment and Multimodal Linking Implemen- tation",
+          "text_content": "which frequency placement and prompt–context proximity can arise in practice.",
           "source_block_ids": [
             "959a0f162b58"
-          ]
-        },
-        {
-          "region_id": "60474b48521b",
-          "region_class": "list",
-          "bbox": {
-            "x0": 48.9639892578125,
-            "y0": 379.90802001953125,
-            "x1": 300.031494140625,
-            "y1": 437.8670349121094
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "1) Step 3: Text-Layout Alignment (Mapping): Given ex- tracted text blocks B and detected layout regions R on each page, we assign each block i to a region j by maximizing spatial consistency. For every pair ( i, j ) on the same page, we compute an overlap score:",
-          "source_block_ids": [
-            "2c2f6714b612"
-          ]
-        },
-        {
-          "region_id": "6ccea69e889f",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 317.7319641113281,
-            "y0": 386.62188720703125,
-            "x1": 547.782470703125,
-            "y1": 480.5009460449219
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "1: for each page p do 2: for each text block i ∈B p do 3: compute S map ( i, j ) for all j ∈R p 4: j ⋆ ← arg max j S map ( i, j ) 5: if S map ( i, j ⋆ ) ≥ τ then 6: add ( i, j ⋆ ) to A 7: else 8: mark i as unassigned for merge/OCR fallback",
-          "source_block_ids": [
-            "d66871f65a88"
-          ]
-        },
-        {
-          "region_id": "d2b07d3cef96",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 118.7649917602539,
-            "y0": 445.41778564453125,
-            "x1": 226.25946044921875,
-            "y1": 463.09051513671875
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "S IoU ( i, j ) = area( b i ∩ r j )",
-          "source_block_ids": [
-            "a79d14eb5f41"
-          ]
-        },
-        {
-          "region_id": "d541f340e961",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 172.86300659179688,
-            "y0": 452.28692626953125,
-            "x1": 300.0215759277344,
-            "y1": 470.4483947753906
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "area( b i ∪ r j ) , (1)",
-          "source_block_ids": [
-            "654b5c0d53d9"
-          ]
-        },
-        {
-          "region_id": "5ab7c8c25bca",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.964019775390625,
-            "y0": 477.2404479980469,
-            "x1": 151.27992248535156,
-            "y1": 487.20306396484375
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "and a containment score:",
-          "source_block_ids": [
-            "596444446dda"
-          ]
-        },
-        {
-          "region_id": "6b5264fa5773",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 313.7469787597656,
-            "y0": 482.40338134765625,
-            "x1": 373.9150695800781,
-            "y1": 528.2308959960938
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "9: end if 10: end for 11: end for 12: return A",
-          "source_block_ids": [
-            "3bf60b9331d9"
-          ]
-        },
-        {
-          "region_id": "2d8176f2ed8e",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 114.86402130126953,
-            "y0": 492.7108154296875,
-            "x1": 230.1604766845703,
-            "y1": 510.5459289550781
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "S contain ( i, j ) = area( b i ∩ r j )",
-          "source_block_ids": [
-            "ebb1ea93d67a"
-          ]
-        },
-        {
-          "region_id": "48720ac67d49",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 186.6439971923828,
-            "y0": 499.5799255371094,
-            "x1": 300.02618408203125,
-            "y1": 517.217529296875
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "area( b i ) . (2)",
-          "source_block_ids": [
-            "62540bf33c0a"
-          ]
-        },
-        {
-          "region_id": "ed576c01c3ea",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400451660156,
-            "y0": 524.1734619140625,
-            "x1": 166.4031524658203,
-            "y1": 534.1360473632812
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "The final alignment score is:",
-          "source_block_ids": [
-            "3db7e2e2ce9e"
-          ]
-        },
-        {
-          "region_id": "0ffec1643470",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 78.54800415039062,
-            "y0": 544.0137939453125,
-            "x1": 300.0313415527344,
-            "y1": 555.10791015625
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "S map ( i, j ) = αS IoU ( i, j ) + (1 − α ) S contain ( i, j ) , (3)",
-          "source_block_ids": [
-            "64831ed08030"
-          ]
-        },
-        {
-          "region_id": "029e37f5147e",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 554.2544555664062,
-            "x1": 563.0355224609375,
-            "y1": 576.1720581054688
-          },
-          "page_index": 2,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "ambiguous or implicit references. A weighted fusion integrates these signals:",
-          "source_block_ids": [
-            "d6f1d95ff92a"
           ]
         },
         {
           "region_id": "9235176688ae",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.96400451660156,
-            "y0": 564.2127685546875,
-            "x1": 300.0314636230469,
-            "y1": 718.85205078125
+            "x0": 307.44000244140625,
+            "y0": 67.81756591796875,
+            "x1": 541.4385375976562,
+            "y1": 91.77849578857422
           },
           "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "where α ∈ [0 , 1] balances IoU vs. containment. A block is assigned to the region with maximum S map if it exceeds a threshold τ . 2) Step 4: Semantic Classification + Multimodal Linking: After alignment, each layout region is assigned an academic semantic role (e.g., Definition, Method, Result, Observation) using a lightweight classifier over region-level text repre- sentations. This enriches structural layout information with contextual scholarly meaning. Multimodal links are then established between captions, in-text references, and their corresponding figures or tables. Linking combines lexical reference detection (e.g., “Fig. 1”, “Table 2”) with embedding-based semantic similarity to handle",
+          "text_content": "ing order can degrade the quality of selected recomputation targets.",
           "source_block_ids": [
             "9e3e7bed84c3"
+          ]
+        },
+        {
+          "region_id": "636c3d150e0a",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.1310119628906,
+            "y0": 97.70556640625,
+            "x1": 543.0936889648438,
+            "y1": 205.3524627685547
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "These results indicate that effective selective recomputation benefits from evaluating token importance under a positional layout that closely matches inference-time decoding. Based on this observation, we adopt GLOBAL as the default RoPE geometry for token selection in our method. In the reorder- ing setting, we use HL–TP for the first-stage selection to encourage diversity across chunks, followed by GLOBAL for the second-stage selection to refine recomputation tar- gets under the final positional layout.",
+          "source_block_ids": [
+            "006ad7530e72"
+          ]
+        },
+        {
+          "region_id": "60474b48521b",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 104.54790496826172,
+            "x1": 122.7672348022461,
+            "y1": 117.50924682617188
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "4.3. KV reorder",
+          "source_block_ids": [
+            "2c2f6714b612"
+          ]
+        },
+        {
+          "region_id": "d2b07d3cef96",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.439998626708984,
+            "y0": 123.55853271484375,
+            "x1": 291.184814453125,
+            "y1": 302.93548583984375
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Beyond KV prefilling and token selection, we further con- sider the ordering of chunks at inference time as an addi- tional degree of freedom for facilitating information flow. Under RoPE-based causal decoding, tokens placed closer to the prompt in the sequence are more likely to interact with prompt queries through attention, which facilitates more effective propagation of contextual information to down- stream generated tokens. We therefore introduce an optional chunk reordering step for settings where input chunks corre- spond to independent segments , such as multi-document retrieval, and where no intrinsic sequential order needs to be preserved. For inputs with intrinsic sequential structure, such as a single long document, reordering may disrupt coherence and is therefore not used. To enable chunk re- ordering, we first derive chunk-level importance scores.",
+          "source_block_ids": [
+            "a79d14eb5f41"
+          ]
+        },
+        {
+          "region_id": "6ccea69e889f",
+          "region_class": "caption",
+          "bbox": {
+            "x0": 306.93798828125,
+            "y0": 216.6430206298828,
+            "x1": 541.4437866210938,
+            "y1": 237.41055297851562
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Table 1. Ablation of RoPE geometry configurations on Qwen under the passage-split setting. Higher is better.",
+          "source_block_ids": [
+            "d66871f65a88"
+          ]
+        },
+        {
+          "region_id": "6b5264fa5773",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 312.4362487792969,
+            "y0": 247.3770751953125,
+            "x1": 536.4508056640625,
+            "y1": 257.4104309082031
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Method 2WikiMQA MuSiQue HotpotQA NarrativeQA",
+          "source_block_ids": [
+            "3bf60b9331d9"
+          ]
+        },
+        {
+          "region_id": "029e37f5147e",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 312.4362487792969,
+            "y0": 261.54925537109375,
+            "x1": 526.334228515625,
+            "y1": 302.0570983886719
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "HL–HP 0.4455 0.2871 0.5529 0.1481 TL–TP 0.4458 0.2970 0.5693 0.1923 HL–TP 0.4722 0.3072 0.5651 0.2106 GLOBAL 0.5019 0.3386 0.5954 0.2288",
+          "source_block_ids": [
+            "d6f1d95ff92a"
+          ]
+        },
+        {
+          "region_id": "d541f340e961",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 55.082000732421875,
+            "y0": 308.8635559082031,
+            "x1": 291.0936279296875,
+            "y1": 452.37548828125
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Concretely, we perform an initial round of token selection within each chunk independently, using local RoPE rather than global positions. This makes token selection within each chunk comparable and prevents chunks closer to the prompt from being systematically favored. After reordering, we reselect tokens under the updated chunk order to obtain the final set of recomputation tokens. This second selection pass accounts for the fact that reordering alters the original prompt–context RoPE geometry, and ensures the selected tokens remain important under the new layout. Autoregres- sive decoding is then performed using the reordered chunks and the corresponding recomputed KV states.",
+          "source_block_ids": [
+            "654b5c0d53d9"
           ]
         },
         {
           "region_id": "720e4c43f686",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 379.5679931640625,
-            "y0": 591.5687866210938,
-            "x1": 563.033935546875,
-            "y1": 603.154541015625
+            "x0": 307.44000244140625,
+            "y0": 324.9949035644531,
+            "x1": 394.8916931152344,
+            "y1": 337.95623779296875
           },
           "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "S link = βS ref + (1 − β ) S emb , (4)",
+          "text_content": "5.2. RoPE Similarity",
           "source_block_ids": [
             "871ef15af7fb"
           ]
@@ -793,832 +997,221 @@
           "region_id": "44e746301ac9",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.97796630859375,
-            "y0": 612.1869506835938,
-            "x1": 563.04541015625,
-            "y1": 718.85205078125
+            "x0": 307.1310119628906,
+            "y0": 344.00555419921875,
+            "x1": 541.4443969726562,
+            "y1": 499.4725036621094
           },
           "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "where S ref captures explicit reference cues and S emb rep- resents cosine similarity between region embeddings. The parameter β ∈ [0 , 1] balances lexical precision and semantic robustness. This step outputs semantically labeled regions together with multimodal edges, which are subsequently consumed by the knowledge graph construction stage. a) Step 5: Knowledge Graph Construction: Input: Mul- timodal links and labeled regions. Output: An academic",
+          "text_content": "To further understand why our selection strategy facilitates effective information propagation, we analyze the RoPE similarity between prompt tokens and the selected context tokens. Importantly, this analysis blocks the contribution of token semantics: similarities are computed purely from the RoPE embedding matrices. Specifically, we measure the similarity between the RoPE embeddings of prompt tokens and those of the selected context tokens, and report both the Mean-of-Max (MoM) similarity and the maximum similarity across selected tokens. Higher values indicate that selected tokens occupy RoPE frequency bands that are more closely aligned with the prompt, and are therefore more positionally reachable under causal decoding.",
           "source_block_ids": [
             "ada325fabfce"
           ]
-        }
-      ],
-      "backend": "heuristic"
-    },
-    {
-      "page_index": 3,
-      "width": 612.0,
-      "height": 792.0,
-      "regions": [
+        },
         {
-          "region_id": "8288edb84a05",
+          "region_id": "5ab7c8c25bca",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 51.35444641113281,
-            "x1": 300.03143310546875,
-            "y1": 263.9402160644531
+            "x0": 55.13100051879883,
+            "y0": 458.3035583496094,
+            "x1": 291.09857177734375,
+            "y1": 518.1284790039062
           },
-          "page_index": 3,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "knowledge graph with nodes and edges that preserve prove- nance information, G = ( V, E ) . Semantically labeled areas are now combined into a structured graph representation. Section V-C contains the comprehensive definition of the schema. b) Step 6: Embedding and Indexing: Input: selected text spans together with their graph context. Output: vector index I v and graph index I g used during retrieval. Here, textual segments are encoded into dense representations while their structural relations are preserved in a graph store. c) Step 7: Hybrid Retrieval: Input: user query q . Output: candidate evidence retrieved from both the vector and graph indices. The final relevance computation strategy is described in Section V-F. d) Step 8: Retrieval-Augmented Answer Generation: Input: fused evidence C . Output: grounded response with citations to provenance fields (page/region/section), enabling traceable academic question answering.",
+          "text_content": "Thus, chunk reordering leverages the freedom in chunk or- dering to further align RoPE geometry with information flow in the decoding phase, complementing token selection under chunk-wise prefilling. More details on KV recompu- tation implementation can be found at Appendix. B",
           "source_block_ids": [
-            "dbf1b85e677c"
+            "596444446dda"
           ]
         },
         {
-          "region_id": "b762a7af5caa",
+          "region_id": "1c13608a2e51",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 311.97796630859375,
-            "y0": 51.35542297363281,
-            "x1": 563.0401000976562,
-            "y1": 109.13809204101562
+            "x0": 414.23529052734375,
+            "y0": 514.002685546875,
+            "x1": 516.0753784179688,
+            "y1": 524.4608154296875
           },
-          "page_index": 3,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "module finds related nodes and subgraphs concurrently, gener- ating relational relevance scores S g ( c i , q ) according to relation types, traversal depth, and edge confidence weights. For every candidate c i , the final hybrid relevance score is calculated as follows:",
+          "text_content": "2WikiMQA HotpotQA",
           "source_block_ids": [
-            "9970120c7510"
+            "95ba7f2070a5"
           ]
         },
         {
-          "region_id": "7da40700b7b4",
+          "region_id": "83576148e496",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 345.02996826171875,
-            "y0": 117.89583587646484,
-            "x1": 563.0352783203125,
-            "y1": 128.99098205566406
+            "x0": 323.9626770019531,
+            "y0": 527.8135986328125,
+            "x1": 521.236083984375,
+            "y1": 537.5000610351562
           },
-          "page_index": 3,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "S hybrid ( c i , q ) = λS v ( c i , q ) + (1 − λ ) S g ( c i , q ) , (5)",
+          "text_content": "Model Method MoM Max MoM Max",
           "source_block_ids": [
-            "db0fe9d8d980"
+            "5e489349f2d7"
           ]
         },
         {
-          "region_id": "f434c2f1e783",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 137.06581115722656,
-            "x1": 563.0447387695312,
-            "y1": 159.34310913085938
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "where λ ∈ [0 , 1] establishes the ratio of relational reasoning to semantic similarity.",
-          "source_block_ids": [
-            "2f8b28af0684"
-          ]
-        },
-        {
-          "region_id": "891ca64a984f",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 168.6490478515625,
-            "x1": 500.7890625,
-            "y1": 178.6116485595703
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "G. Retrieval-Augmented Response Generation",
-          "source_block_ids": [
-            "823a7c665352"
-          ]
-        },
-        {
-          "region_id": "22b763aa2c31",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 184.23353576660156,
-            "x1": 563.0355834960938,
-            "y1": 277.8832092285156
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Retrieved evidence from both the vector database and knowledge graph is provided as contextual input to a large lan- guage model for response generation. By grounding generation in retrieved multimodal and structured knowledge, the system reduces hallucinations and produces accurate, context-aware, and interpretable responses. The modular agent-based design allows for flexible integration of different language models without altering the core architecture.",
-          "source_block_ids": [
-            "d9da76cee358"
-          ]
-        },
-        {
-          "region_id": "35835bd6b54f",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 271.86712646484375,
-            "x1": 214.2534637451172,
-            "y1": 281.8297119140625
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "C. Academic Knowledge Graph Schema",
-          "source_block_ids": [
-            "ec1df2e8806f"
-          ]
-        },
-        {
-          "region_id": "1a52768f8001",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 287.0345764160156,
-            "x1": 300.0218811035156,
-            "y1": 368.7281188964844
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "We construct a lightweight academic knowledge graph capturing structural and scholarly entities (Document, Sec- tion, Concept, Method, Dataset, Result, Figure, Table, Cita- tion) with provenance (page index and extraction confidence). Edges encode relations such as appears_in , refers_to , explains , uses_method , evaluated_on , produces , and cites , enabling traceable relational retrieval.",
-          "source_block_ids": [
-            "f562efd4d9dc"
-          ]
-        },
-        {
-          "region_id": "69ef69b99620",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 365.2039489746094,
-            "y0": 287.3645935058594,
-            "x1": 509.81341552734375,
-            "y1": 297.32720947265625
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "VI. E XPERIMENTAL E VALUATION",
-          "source_block_ids": [
-            "928712633bc0"
-          ]
-        },
-        {
-          "region_id": "a4cbb78698d4",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 302.99859619140625,
-            "x1": 563.035400390625,
-            "y1": 360.7811584472656
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "The proposed framework is currently implemented as a modular prototype. At this stage, the evaluation focuses on qualitative analysis of retrieval grounding, relational reasoning capability, and structural alignment, while large-scale quanti- tative benchmarking is planned as future work.",
-          "source_block_ids": [
-            "6211441f7ae8"
-          ]
-        },
-        {
-          "region_id": "6642596874b7",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 370.08709716796875,
-            "x1": 404.83929443359375,
-            "y1": 380.0496826171875
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "A. Experimental Setup",
-          "source_block_ids": [
-            "00fc62db2869"
-          ]
-        },
-        {
-          "region_id": "bad130ad3f89",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 376.654052734375,
-            "x1": 230.52236938476562,
-            "y1": 386.61663818359375
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "D. Vector Embedding and Semantic Storage",
-          "source_block_ids": [
-            "3e40028bc8bd"
-          ]
-        },
-        {
-          "region_id": "96786126f8b0",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 385.67254638671875,
-            "x1": 563.0355224609375,
-            "y1": 553.4140625
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "The system is implemented as an end-to-end pipeline over academic PDF documents containing structured sections, fig- ures, tables, and citations. A set of representative academic queries was manually designed to evaluate the system’s ability to: (i) retrieve struc- turally aligned content, (ii) resolve cross-referenced elements such as figures and tables, (iii) identify method–result and dataset relationships, and (iv) support citation tracing and cross-section reasoning. Each query was executed across three systems: 1) An OCR-based text retrieval pipeline, 2) A text-only Retrieval-Augmented Generation (RAG) system, 3) The proposed agent-orchestrated multimodal framework.",
-          "source_block_ids": [
-            "c853c9f021c0"
-          ]
-        },
-        {
-          "region_id": "0c4e968d613b",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 391.8215026855469,
-            "x1": 300.0218811035156,
-            "y1": 473.5150451660156
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Sentence-level encoders are used in conjunction with graph construction to transform semantically significant text seg- ments into dense embeddings. To facilitate effective similarity- based retrieval, these embeddings are kept in a vector database. Even in cases where there is little lexical overlap, this repre- sentation facilitates semantic matching between user queries and pertinent scholarly content.",
-          "source_block_ids": [
-            "38a1b53442be"
-          ]
-        },
-        {
-          "region_id": "54322e76185a",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 481.44097900390625,
-            "x1": 123.56394958496094,
-            "y1": 491.403564453125
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "E. Model Choices",
-          "source_block_ids": [
-            "e81d041ca606"
-          ]
-        },
-        {
-          "region_id": "b6c10c55b3d3",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 496.6084289550781,
-            "x1": 300.02191162109375,
-            "y1": 602.2119750976562
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "The current prototype integrates LayoutLM-style features for layout-aware encoding and employs SBERT [3] for sentence-level semantic embeddings. Lexical reference de- tection and embedding similarity are combined to create multimodal linking. Because the general framework is still model-agnostic, more sophisticated document transformers, like Donut or other vision-language encoders, can be inte- grated without necessitating modifications to the orchestration or retrieval components.",
-          "source_block_ids": [
-            "e00793e8fdf8"
-          ]
-        },
-        {
-          "region_id": "0dde491463c6",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 562.7200317382812,
-            "x1": 363.72369384765625,
-            "y1": 572.6826171875
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "B. Baselines",
-          "source_block_ids": [
-            "40d4f4dc7f8a"
-          ]
-        },
-        {
-          "region_id": "af883584ed00",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 578.3045043945312,
-            "x1": 563.0355834960938,
-            "y1": 624.133056640625
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Two baselines are considered: (i) an OCR-based retrieval pipeline operating on flattened text, and (ii) a text-only RAG system using semantic embeddings without layout or graph modeling.",
-          "source_block_ids": [
-            "4f1abd4ca06d"
-          ]
-        },
-        {
-          "region_id": "6db7ce612472",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.96400833129883,
-            "y0": 610.137939453125,
-            "x1": 165.40687561035156,
-            "y1": 620.1005249023438
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "F. Hybrid Retrieval Strategy",
-          "source_block_ids": [
-            "e587292c9578"
-          ]
-        },
-        {
-          "region_id": "974648bb5c22",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.9639892578125,
-            "y0": 625.305419921875,
-            "x1": 300.02191162109375,
-            "y1": 718.8519897460938
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "A weighted score fusion scheme that combines vector- based scores with graph-based relevance measures is used to combine relational graph signals and semantic similarity during retrieval. The vector retrieval module uses cosine similarity over sentence embeddings to calculate normalized semantic sim- ilarity scores S v ( c i , q ) and returns candidate text chunks c i in response to a user query q . The knowledge graph retrieval",
-          "source_block_ids": [
-            "85ff73c6a1f4"
-          ]
-        },
-        {
-          "region_id": "76d61541380f",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 633.4390258789062,
-            "x1": 450.40814208984375,
-            "y1": 643.401611328125
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "C. Qualitative Evaluation Results",
-          "source_block_ids": [
-            "26f90fe60301"
-          ]
-        },
-        {
-          "region_id": "81cd55dbb8e8",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779357910156,
-            "y0": 649.0234985351562,
-            "x1": 563.0355224609375,
-            "y1": 718.85205078125
-          },
-          "page_index": 3,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "We evaluated each system with respect to both the relevance of retrieved evidence and its structural grounding within the document. The comparison across representative query types is summarized in Table I. In our qualitative analysis, the OCR-based pipeline often failed to preserve document structure, which limited its ability",
-          "source_block_ids": [
-            "ba6648c4a900"
-          ]
-        }
-      ],
-      "backend": "heuristic"
-    },
-    {
-      "page_index": 4,
-      "width": 612.0,
-      "height": 792.0,
-      "regions": [
-        {
-          "region_id": "a930a484e239",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 199.37298583984375,
-            "y0": 52.865535736083984,
-            "x1": 412.6344909667969,
-            "y1": 69.8026123046875
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "TABLE I Q UALITATIVE C OMPARISON A CROSS R ETRIEVAL A PPROACHES",
-          "source_block_ids": [
-            "f9bc346603d0"
-          ]
-        },
-        {
-          "region_id": "1477b9c048df",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 110.30400085449219,
-            "y0": 80.3097915649414,
-            "x1": 477.4098815917969,
-            "y1": 106.68365478515625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Query Type OCR-Based Text-Only RAG Proposed Framework Figure explanation retrieval",
-          "source_block_ids": [
-            "3048fe428ee2"
-          ]
-        },
-        {
-          "region_id": "ed74763b416c",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 110.30400085449219,
-            "y0": 89.74755096435547,
-            "x1": 501.6949462890625,
-            "y1": 142.94769287109375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Explicit section–figure align- ment using layout-aware link- ing Method–result association Limited support due to ab- sence of relational model- ing",
-          "source_block_ids": [
-            "aa2aa42aca7a"
-          ]
-        },
-        {
-          "region_id": "a3b99a2fb17a",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 207.69700622558594,
-            "y0": 89.74755096435547,
-            "x1": 292.7380065917969,
-            "y1": 106.68365478515625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Keyword-based matching without layout modeling",
-          "source_block_ids": [
-            "1713ba0c4873"
-          ]
-        },
-        {
-          "region_id": "7bea6ab405d5",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 305.0899963378906,
-            "y0": 89.74755096435547,
-            "x1": 390.1311340332031,
-            "y1": 115.650634765625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Text proximity-based retrieval without explicit alignment",
-          "source_block_ids": [
-            "162a6465b1e9"
-          ]
-        },
-        {
-          "region_id": "207cdf079af0",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 110.30400085449219,
-            "y0": 117.04558563232422,
-            "x1": 501.6949157714844,
-            "y1": 161.2796630859375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Explicit method–result rela- tions modeled in knowledge graph Citation tracing Keyword-based lookup without structural linkage",
-          "source_block_ids": [
-            "7daaa99c6de2"
-          ]
-        },
-        {
-          "region_id": "1b06345f20fa",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 305.0899963378906,
-            "y0": 117.04558563232422,
-            "x1": 390.1310729980469,
-            "y1": 142.94769287109375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Implicit association in- ferred from local text con- text",
-          "source_block_ids": [
-            "58c1baec2ac6"
-          ]
-        },
-        {
-          "region_id": "a76e97344d99",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 305.0899963378906,
-            "y0": 144.34259033203125,
-            "x1": 390.131103515625,
-            "y1": 170.24566650390625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Textually relevant retrieval without structured citation modeling",
-          "source_block_ids": [
-            "f4f51db5ae23"
-          ]
-        },
-        {
-          "region_id": "896b27896ff4",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 402.4830017089844,
-            "y0": 144.34259033203125,
-            "x1": 501.69488525390625,
-            "y1": 161.2796630859375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Structured citation linkage via graph traversal",
-          "source_block_ids": [
-            "439ea2a8e512"
-          ]
-        },
-        {
-          "region_id": "979839e10680",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 110.30400085449219,
-            "y0": 171.64056396484375,
-            "x1": 292.73797607421875,
-            "y1": 188.57666015625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Dataset identification Unstructured mentions without entity modeling",
-          "source_block_ids": [
-            "9b895fc48902"
-          ]
-        },
-        {
-          "region_id": "20d12c9072eb",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 305.0899963378906,
-            "y0": 171.64056396484375,
-            "x1": 390.1310729980469,
-            "y1": 197.54364013671875
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Semantic matching with- out explicit dataset repre- sentation",
-          "source_block_ids": [
-            "f4edc7cf727b"
-          ]
-        },
-        {
-          "region_id": "a73ddc4c9446",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 402.4830017089844,
-            "y0": 171.64056396484375,
-            "x1": 501.6949768066406,
-            "y1": 188.57666015625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Dataset entities explicitly rep- resented in knowledge graph",
-          "source_block_ids": [
-            "21829f510dd8"
-          ]
-        },
-        {
-          "region_id": "3c1b4d934db3",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 110.30400085449219,
-            "y0": 198.93756103515625,
-            "x1": 292.738037109375,
-            "y1": 215.8746337890625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Cross-section reasoning Limited support for multi- section reasoning",
-          "source_block_ids": [
-            "69fdef646a61"
-          ]
-        },
-        {
-          "region_id": "10ded72fa7c8",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 305.0899963378906,
-            "y0": 198.93756103515625,
-            "x1": 390.13104248046875,
-            "y1": 215.8746337890625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Contextual linkage within retrieved passages only",
-          "source_block_ids": [
-            "69b933e7d828"
-          ]
-        },
-        {
-          "region_id": "3e99cf42a93d",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 402.4830017089844,
-            "y0": 198.93756103515625,
-            "x1": 501.6949157714844,
-            "y1": 215.8746337890625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Explicit multi-hop relational traversal across sections",
-          "source_block_ids": [
-            "df2df3989d9c"
-          ]
-        },
-        {
-          "region_id": "74ec908b9a20",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 311.9779968261719,
-            "y0": 239.9673614501953,
-            "x1": 563.03564453125,
-            "y1": 381.4368896484375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "hybrid retrieval. The framework handled queries involving figures, methods, datasets, and citations more consistently and with a stronger contextual foundation in our qualitative tests. The results show that combining multimodal extraction with structured knowledge representation is a promising path for academic retrieval systems, even though the current evalua- tion is restricted to qualitative analysis. Future research will concentrate on improvements aimed at scalability and realistic deployment, quantitative benchmarking, and ablation studies to better understand component contributions. In order to improve interactive academic knowledge exploration, we also plan to look into adaptive agent strategies.",
-          "source_block_ids": [
-            "035c94d1a8a5"
-          ]
-        },
-        {
-          "region_id": "558b471594c0",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 239.9674835205078,
-            "x1": 300.02154541015625,
-            "y1": 321.66107177734375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "to resolve relational queries. The text-only RAG system im- proved semantic relevance in many cases, but without explicit modeling of academic relationships, grounding remained weak for more complex queries. By contrast, the proposed frame- work produced more consistently aligned and contextually grounded results, largely due to the combination of multimodal alignment and knowledge graph reasoning.",
-          "source_block_ids": [
-            "c7f99e2e38ef"
-          ]
-        },
-        {
-          "region_id": "1a2a14ec2594",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 332.177001953125,
-            "x1": 107.35478973388672,
-            "y1": 342.13958740234375
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "D. Discussion",
-          "source_block_ids": [
-            "1cae693e9067"
-          ]
-        },
-        {
-          "region_id": "d2d9750de07a",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 348.2604675292969,
-            "x1": 300.02191162109375,
-            "y1": 465.8189697265625
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "Overall, our observations indicate that the framework pro- vides stronger structural grounding and relational reason- ing compared to the baselines considered. In particular, ex- plicit knowledge graph modeling supports multi-hop academic queries that are difficult to handle with text-only retrieval. At the same time, the additional stages required for graph construction and alignment introduce computational overhead. This trade-off implies that additional optimization will be required to strike a balance between efficiency and reasoning ability.",
-          "source_block_ids": [
-            "75ee7f7160b8"
-          ]
-        },
-        {
-          "region_id": "b378a5c914a0",
-          "region_class": "paragraph",
-          "bbox": {
-            "x0": 409.61199951171875,
-            "y0": 390.1542663574219,
-            "x1": 465.4085998535156,
-            "y1": 400.11688232421875
-          },
-          "page_index": 4,
-          "confidence": 0.8,
-          "backend": "heuristic",
-          "text_content": "R EFERENCES",
-          "source_block_ids": [
-            "d082d908822c"
-          ]
-        },
-        {
-          "region_id": "972c23af46ad",
+          "region_id": "2d8176f2ed8e",
           "region_class": "reference",
           "bbox": {
-            "x0": 311.97802734375,
-            "y0": 406.4593811035156,
-            "x1": 563.0398559570312,
-            "y1": 611.6905517578125
+            "x0": 55.439998626708984,
+            "y0": 532.4170532226562,
+            "x1": 147.43527221679688,
+            "y1": 547.9707641601562
           },
-          "page_index": 4,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "[1] P. Lewis, E. Perez, A. Piktus, et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” in Advances in Neural Informa- tion Processing Systems (NeurIPS) , 2020. [2] J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding,” in Proc. NAACL-HLT , 2019. [3] N. Reimers and I. Gurevych, “Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks,” in Proc. EMNLP , 2019. [4] Y. Xu, M. Li, L. Cui, S. Huang, F. Wei, and M. Zhou, “LayoutLM: Pre-training of Text and Layout for Document Image Understanding,” in Proc. KDD , 2020. [5] Y. Xu, Y. Xu, T. Lv, et al., “LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding,” in Proc. ACL , 2021. [6] A. Appalaraju, B. Jasani, and A. Manmatha, “DocFormer: End-to-End Transformer for Document Understanding,” in Proc. ICCV , 2021. [7] G. Kim, T. Hong, B. Chung, and J. Park, “Donut: Document Under- standing Transformer without OCR,” in Proc. ECCV , 2022. [8] A. Hogan, E. Blomqvist, M. Cochez, et al., “Knowledge Graphs,” ACM Computing Surveys , vol. 54, no. 4, 2021. [9] J. Johnson, M. Douze, and H. J´egou, “Billion-scale Similarity Search with GPUs,” IEEE Transactions on Big Data , 2019. [10] R. Smith, “An Overview of the Tesseract OCR Engine,” in Proc. ICDAR , 2007.",
+          "text_content": "5. Ablation Result",
           "source_block_ids": [
-            "63e0f78e573a"
+            "ebb1ea93d67a"
           ]
         },
         {
-          "region_id": "143423d70fd9",
+          "region_id": "6f9c8d49b705",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 476.3359069824219,
-            "x1": 180.73928833007812,
-            "y1": 486.2984924316406
+            "x0": 323.9626770019531,
+            "y0": 541.206298828125,
+            "x1": 524.9180297851562,
+            "y1": 570.4752197265625
           },
-          "page_index": 4,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "E. Limitations and Future Work",
+          "text_content": "LLaMA Norm-based 0.5324 0.9773 0.5219 0.9766 CacheBlend 0.5243 0.9133 0.5191 0.8570 EPIC 0.5049 0.6734 0.4985 0.6852",
           "source_block_ids": [
-            "cb96d7bd53f6"
+            "a98e83b7fe61"
           ]
         },
         {
-          "region_id": "07554f8acc1a",
+          "region_id": "48720ac67d49",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 492.4183654785156,
-            "x1": 300.0219421386719,
-            "y1": 586.0679321289062
+            "x0": 55.439998626708984,
+            "y0": 553.7029418945312,
+            "x1": 142.8717803955078,
+            "y1": 566.6642456054688
           },
-          "page_index": 4,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "The evaluation of the current system is restricted to qual- itative evaluation over a small number of documents. Future work includes quantitative benchmarking using measures like precision@k, recall@k, grounding accuracy, and latency. The experiments that are planned include ablation experiments to identify the value added by vector retrieval, graph reasoning, and agent orchestration, as well as comparisons with state-of- the-art multimodal document understanding models.",
+          "text_content": "5.1. RoPE Geometry",
           "source_block_ids": [
-            "5af1f76980ae"
+            "62540bf33c0a"
           ]
         },
         {
-          "region_id": "9545a92c744c",
+          "region_id": "ed576c01c3ea",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 134.28900146484375,
-            "y0": 596.7603149414062,
-            "x1": 214.70120239257812,
-            "y1": 606.722900390625
+            "x0": 54.97200012207031,
+            "y0": 572.7145385742188,
+            "x1": 289.7912902832031,
+            "y1": 608.6295166015625
           },
-          "page_index": 4,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "VII. C ONCLUSION",
+          "text_content": "We ablate different RoPE geometry configurations to study how positional allocation during token selection affects downstream performance.",
           "source_block_ids": [
-            "68fd179601d7"
+            "3db7e2e2ce9e"
           ]
         },
         {
-          "region_id": "0c92971970a1",
+          "region_id": "cee15ba9ee02",
           "region_class": "paragraph",
           "bbox": {
-            "x0": 48.9640007019043,
-            "y0": 613.247314453125,
-            "x1": 300.02191162109375,
-            "y1": 718.8519287109375
+            "x0": 323.9626770019531,
+            "y0": 574.1814575195312,
+            "x1": 524.9180297851562,
+            "y1": 603.4495849609375
           },
-          "page_index": 4,
+          "page_index": 2,
           "confidence": 0.8,
           "backend": "heuristic",
-          "text_content": "In order to enhance academic knowledge extraction and hybrid retrieval, we presented an agent-orchestrated multi- modal framework in this work. The suggested method com- bines vector-based semantic search with graph-based relational reasoning, explicitly models scholarly relationships, and main- tains layout structure rather than depending only on flattened text representations. Our goal is to facilitate more trustworthy document comprehension by organizing the system into phases of extraction, knowledge structuring, semantic alignment, and",
+          "text_content": "Qwen Norm-based 0.4548 0.9805 0.4179 0.9805 CacheBlend 0.4505 0.8078 0.4226 0.8891 EPIC 0.4129 0.5656 0.3835 0.6555",
           "source_block_ids": [
-            "93966993f213"
+            "84b3fafebfaf"
+          ]
+        },
+        {
+          "region_id": "e8d327303dfc",
+          "region_class": "caption",
+          "bbox": {
+            "x0": 306.93798828125,
+            "y0": 605.7970581054688,
+            "x1": 543.011474609375,
+            "y1": 636.5275268554688
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Table 2. RoPE similarity statistics on long-context QA benchmarks. We report Mean-of-Max (MoM) and Max scores across different inference strategies. Higher is better.",
+          "source_block_ids": [
+            "6eafef340c86"
+          ]
+        },
+        {
+          "region_id": "0ffec1643470",
+          "region_class": "caption",
+          "bbox": {
+            "x0": 55.13100051879883,
+            "y0": 614.5575561523438,
+            "x1": 291.0980224609375,
+            "y1": 710.2484741210938
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "Table 1 shows that RoPE geometry has a substantial impact on recomputation effectiveness. Among the tested configura- tions, GLOBAL consistently achieves the best performance across all four benchmarks. In contrast, configurations that assign prompt and context tokens to separate or truncated positional ranges (e.g., HL–HP and TL–TP) result in notice- ably lower scores. This suggests that mismatches between the positional layout used for selection and the actual decod-",
+          "source_block_ids": [
+            "64831ed08030"
+          ]
+        },
+        {
+          "region_id": "6a6547a24897",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 307.0820007324219,
+            "y0": 658.0345458984375,
+            "x1": 541.7904663085938,
+            "y1": 717.8604736328125
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "As shown in Table 2 , norm-based selection consistently yields higher RoPE similarity scores than prior methods across both datasets and model families, under both the Mean-of-Max and Max metrics. This result reveals an alignment between attention salience and RoPE-induced",
+          "source_block_ids": [
+            "cc2da3225383"
+          ]
+        },
+        {
+          "region_id": "11fb94d9a82f",
+          "region_class": "paragraph",
+          "bbox": {
+            "x0": 295.95001220703125,
+            "y0": 730.7615356445312,
+            "x1": 300.9313049316406,
+            "y1": 742.7664794921875
+          },
+          "page_index": 2,
+          "confidence": 0.8,
+          "backend": "heuristic",
+          "text_content": "5",
+          "source_block_ids": [
+            "702c215d5bd3"
           ]
         }
       ],

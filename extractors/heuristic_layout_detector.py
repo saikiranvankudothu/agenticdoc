@@ -44,6 +44,7 @@ from extractors.models import (
 from extractors.layout_models import (
     LayoutRegion, PageLayoutResult, RegionClass, DetectionBackend,
 )
+from extractors.reading_order import sort_reading_order
 
 logger = logging.getLogger(__name__)
 
@@ -234,8 +235,16 @@ class HeuristicLayoutDetector:
             ))
             seq += 1
 
-        # ── Sort regions top-to-bottom (reading order) ─────────
-        regions.sort(key=lambda r: (r.bbox.y0, r.bbox.x0))
+        # ── Sort regions into proper reading order ──────────────
+        # Uses column-aware XY-cut algorithm instead of naive (y0, x0) sort.
+        # Correctly handles two-column IEEE/ACM layouts and full-width blocks.
+        regions = sort_reading_order(
+            regions              = regions,
+            page_width           = page.width,
+            page_height          = page.height,
+            full_width_threshold = 0.55,
+            column_gap_min       = 15.0,
+        )
 
         return PageLayoutResult(
             page_index = page.page_index,

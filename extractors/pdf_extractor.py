@@ -19,6 +19,7 @@ except ImportError:
 from PIL import Image
 from .models import (TextBlock, FigureBlock, BoundingBox, StyleAttributes,
                      BlockType, ExtractionMethod, PageExtractionResult)
+from .figure_detector import detect_all_figures
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +95,18 @@ class PDFTextExtractor:
             logger.info(f"Page {page_index}: {total_chars} chars < threshold — OCR fallback")
             text_blocks   = self._ocr_page(page, doc_id, page_index)
             ocr_triggered = True
+
+        # ── Enhanced figure detection (vector + XObject + gap strategies) ──
+        text_bboxes = [b.bbox for b in text_blocks]
+        figure_blocks = detect_all_figures(
+            page                    = page,
+            doc_id                  = doc_id,
+            page_index              = page_index,
+            page_width              = rect.width,
+            page_height             = rect.height,
+            text_bboxes             = text_bboxes,
+            existing_raster_figures = figure_blocks,   # type=1 blocks already found
+        )
 
         result.text_blocks       = text_blocks
         result.figure_blocks     = figure_blocks

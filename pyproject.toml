@@ -1,19 +1,26 @@
 [project]
 name = "agenticdoc"
 version = "0.1.0"
-description = "Add your description here"
+description = "Document understanding pipeline with extraction and layout detection"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.13"
 
 dependencies = [
-    "pymupdf>=1.24.0",
-    "pytesseract>=0.3.10",
-    "Pillow>=10.0.0",
-    "opencv-python>=4.8.0",
-    "numpy>=1.26.0",
-    "pandas>=2.1.0",
-    "pydantic>=2.5.0",
-    "tqdm>=4.66.0",
-    "loguru>=0.7.0",
-    "python-dotenv>=1.0.0"
+    "pymupdf==1.24.9",
+    "pytesseract==0.3.10",
+    "Pillow==10.4.0",
+    "opencv-python==4.10.0.84",
+    "numpy==1.26.4",
+    "pandas==2.2.2",
+    "pydantic==2.7.4",
+    "tqdm==4.66.4",
+    "loguru==0.7.2",
+    "python-dotenv==1.0.1",
+    "matplotlib==3.8.4",
+
+    # ML layout detection (DocLayNet / DiT)
+    "torch==2.3.1",
+    "torchvision==0.18.1",
+    "transformers==4.41.2",
+    "accelerate==0.30.1",
 ]
