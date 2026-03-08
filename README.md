@@ -1,83 +1,127 @@
-# Agentic Document Understanding – Step 1 Implementation
+# AgenticDoc – Agentic Document Understanding Pipeline
 
-## Project Overview
+## Overview
 
-This project implements the **first stage of a modular document understanding pipeline**.
-The goal of this stage is to extract structured information from PDF documents and store it in a **JSON format with layout metadata** such as bounding boxes, block types, and styles.
+**AgenticDoc** is a modular document intelligence system designed to convert complex academic PDFs into **structured, layout-aware representations** that can later be used by Large Language Models (LLMs).
 
-The pipeline currently focuses on:
+The project follows an **agent-based architecture**, where each stage of document understanding is handled by a dedicated agent.
 
-- Extracting **text blocks**
-- Detecting **equations**
-- Recording **layout coordinates (bounding boxes)**
-- Storing results in a **structured JSON file**
+Current implemented stages:
 
-This structured output enables future stages such as **layout detection, semantic chunking, and LLM-based reasoning**.
+1. **Document Extraction Agent**
+2. **Layout Detection Agent**
+3. **Figure Detection**
+4. **Reading Order Reconstruction**
+5. **Layout Visualization**
+
+The system transforms raw PDFs into **structured JSON with spatial metadata**, enabling downstream tasks like semantic chunking, retrieval, and LLM reasoning.
 
 ---
 
-# Current Pipeline (Step 1)
+# Pipeline Architecture
+
+Current pipeline:
 
 ```
 PDF Document
      ↓
-Document Parsing
+Document Extraction Agent
      ↓
-Text Block Extraction
+Layout Detection Agent
      ↓
-Bounding Box Detection
+Figure Detection
+     ↓
+Reading Order Reconstruction
      ↓
 Structured JSON Output
      ↓
-Visualization of Detected Text
+Visualization / Debugging
 ```
 
-This step ensures that the document is converted from a raw PDF into a **machine-readable layout-aware format**.
+Future pipeline:
+
+```
+PDF
+ ↓
+Extraction
+ ↓
+Layout Detection
+ ↓
+Semantic Chunking
+ ↓
+Embedding + Retrieval
+ ↓
+LLM Reasoning
+ ↓
+Knowledge Graph
+```
 
 ---
 
 # Repository Structure
 
 ```
-project/
+agenticdoc/
 │
-├── pdf/
-│   └── paper.pdf
+├── agents/
+│   ├── document_extraction_agent.py
+│   └── layout_detection_agent.py
 │
-├── outputs/
-│   └── extraction.json
+├── extractors/
+│   ├── pdf_extractor.py
+│   ├── heuristic_layout_detector.py
+│   ├── ml_layout_detector.py
+│   ├── figure_detector.py
+│   ├── reading_order.py
+│   ├── layout_models.py
+│   └── models.py
 │
-├── scripts/
-│   ├── parse_document.py
-│   └── visualize_blocks.py
+├── output/
+│   └── <doc_id>/
+│       ├── figures/
+│       └── json/
+│           ├── extraction.json
+│           └── layout.json
 │
+├── plots/
+│
+├── tests/
+│
+├── run_extraction.py
+├── run_layout.py
+├── draw.py
+├── tempdraw.py
 └── README.md
 ```
 
 ---
 
-# Input Document
+# Agent 1 – Document Extraction Agent
 
-The input is a **PDF document** containing:
-
-- Text
-- Figures
-- Mathematical equations
-- Multi-column layouts
-
-Example:
+File:
 
 ```
-paper.pdf
+agents/document_extraction_agent.py
 ```
 
----
+This agent parses the input PDF and extracts structured content.
 
-# Output JSON Structure
+## Responsibilities
 
-The extracted data is stored in a structured JSON format.
+- Open PDF using **PyMuPDF**
+- Extract text blocks
+- Extract embedded images
+- Run OCR fallback when text is missing
+- Record bounding boxes and font metadata
+- Save structured JSON output
 
-Example:
+## Output
+
+```
+output/<doc_id>/json/extraction.json
+```
+
+Example structure:
 
 ```json
 {
@@ -86,23 +130,8 @@ Example:
   "pages": [
     {
       "page_index": 0,
-      "width": 612,
-      "height": 792,
-      "text_blocks": [
-        {
-          "block_id": "08824b22e9a4",
-          "text": "Information-Flow-Aware KV Recomputation for Long Context",
-          "bbox": {
-            "x0": 178.04,
-            "y0": 47.22,
-            "x1": 418.84,
-            "y1": 56.19
-          },
-          "block_type": "text",
-          "confidence": 1.0
-        }
-      ],
-      "figure_blocks": []
+      "text_blocks": [...],
+      "figure_blocks": [...]
     }
   ]
 }
@@ -110,172 +139,360 @@ Example:
 
 ---
 
-# Extracted Elements
+# Agent 2 – Layout Detection Agent
 
-The system currently detects:
+File:
 
-| Element             | Status |
-| ------------------- | ------ |
-| Text Blocks         | ✅     |
-| Equations           | ✅     |
-| Bounding Boxes      | ✅     |
-| Font Style Metadata | ✅     |
-| Figures             | ❌     |
-| Tables              | ❌     |
+```
+agents/layout_detection_agent.py
+```
+
+This agent converts extracted blocks into **semantic layout regions**.
+
+## Supported Backends
+
+| Backend      | Description                                  |
+| ------------ | -------------------------------------------- |
+| heuristic    | Rule-based classifier (no ML dependencies)   |
+| layoutparser | Detectron2-based PubLayNet model             |
+| dit          | Transformer-based Document Image Transformer |
+
+The system automatically selects the best backend available.
+
+Priority order:
+
+```
+LayoutParser → DiT → Heuristic
+```
 
 ---
 
-# Key Observations
+# Layout Classes
 
-During testing with the sample document:
+The system detects the following region types:
 
-- **Text extraction works correctly**
-- **Bounding boxes are accurate**
-- **Equations are detected**
-- **Figure images are not detected**
+| Class     | Description                |
+| --------- | -------------------------- |
+| title     | Document or section titles |
+| paragraph | Body text                  |
+| figure    | Figure regions             |
+| caption   | Figure/table captions      |
+| table     | Table content              |
+| equation  | Mathematical expressions   |
+| list      | Bullet lists               |
+| reference | Bibliography entries       |
+| header    | Running headers            |
+| footer    | Page numbers / footers     |
+
+---
+
+# Figure Detection
+
+File:
+
+```
+extractors/figure_detector.py
+```
+
+Many research PDFs contain figures that are **not raster images**.
+
+This module detects figures using **three complementary strategies**:
+
+### 1. Vector Drawing Detection
+
+Uses:
+
+```
+page.get_drawings()
+```
+
+to detect diagrams drawn using vector graphics.
+
+### 2. XObject Detection
+
+Detects figures embedded as **Form XObjects**.
+
+### 3. Text Gap Detection
+
+Detects large empty areas surrounded by text blocks.
+
+Final figures are **merged and deduplicated**.
+
+---
+
+# Reading Order Reconstruction
+
+File:
+
+```
+extractors/reading_order.py
+```
+
+Academic papers often use **multi-column layouts**.
+
+This module reconstructs the correct reading order using:
+
+- column detection
+- bounding box sorting
+- spatial clustering
 
 Example:
 
-The PDF contains **Figure 1**, but the output JSON contains:
-
 ```
-"figure_blocks": []
-```
+Correct order:
 
-This means the parser extracted the **figure caption text**, but not the **figure image region**.
+Title
+Figure
+Caption
+Left column text
+Right column text
+```
 
 ---
 
-# Visualizing Detected Text Blocks
+# Visualization Tools
 
-To verify the extracted layout, we can visualize the bounding boxes on top of the original PDF.
+Visualization scripts allow debugging of detected regions.
 
-This helps confirm that the system correctly detected text regions.
+## Layout Visualization
+
+Script:
+
+```
+draw.py
+```
+
+Command:
+
+```
+python draw.py
+```
+
+Produces:
+
+```
+plots/papermod_layout_visualized.pdf
+```
+
+Example visualization:
+
+- **Red** → title
+- **Blue** → paragraph
+- **Green** → figure
+- **Orange** → caption
+
+---
+
+# Running the System
 
 ## Install Dependencies
 
 ```
-pip install pymupdf
+pip install -r requirements.txt
+```
+
+Core dependencies:
+
+```
+pymupdf
+pytesseract
+opencv-python
+numpy
+pandas
+pydantic
+loguru
+```
+
+Optional ML backends:
+
+```
+layoutparser
+torch
+transformers
 ```
 
 ---
 
-## Visualization Script
+# Run Extraction
 
-```python
-import fitz
-import json
+```
+python run_extraction.py --pdf pdf/paper.pdf
+```
 
-pdf = fitz.open("paper.pdf")
+Output:
 
-with open("extraction.json") as f:
-    data = json.load(f)
-
-for page_data in data["pages"]:
-    page = pdf[page_data["page_index"]]
-
-    for block in page_data["text_blocks"]:
-        bbox = block["bbox"]
-
-        rect = fitz.Rect(
-            bbox["x0"],
-            bbox["y0"],
-            bbox["x1"],
-            bbox["y1"]
-        )
-
-        page.draw_rect(rect, color=(1,0,0), width=1)
-
-pdf.save("visualized_output.pdf")
+```
+output/paper/json/extraction.json
 ```
 
 ---
 
-## Visualization Output
-
-The generated PDF will contain **bounding boxes around detected text blocks**.
-
-Example visualization:
+# Run Layout Detection
 
 ```
-┌──────────────────────────────┐
-│ Title Text                   │
-└──────────────────────────────┘
-
-┌──────────────────────────────┐
-│ Paragraph text               │
-│ Paragraph text               │
-└──────────────────────────────┘
+python run_layout.py --pdf pdf/paper.pdf
 ```
 
-This allows quick verification of the parsing results.
+Force a specific backend:
+
+```
+python run_layout.py --pdf pdf/paper.pdf --backend heuristic
+python run_layout.py --pdf pdf/paper.pdf --backend dit
+python run_layout.py --pdf pdf/paper.pdf --backend layoutparser
+```
+
+Print detected regions:
+
+```
+python run_layout.py --pdf pdf/paper.pdf --print-regions
+```
+
+Output:
+
+```
+output/paper/json/layout.json
+```
 
 ---
 
-# Limitations of Current Implementation
+# Example Layout Output
 
-The current system does not yet detect:
+```
+LAYOUT DETECTION SUMMARY
 
-- Figures
-- Tables
-- Images
-- Reading order
+Document ID  : paper
+Total Pages  : 3
+Total Regions: 66
 
-These components require **layout detection models**.
+paragraph  █████████████████████████
+caption    ████
+figure     █
+list       ████
+reference  ████
+equation   █
+```
 
 ---
 
-# Next Steps (Step 2)
+# Example Visualization
 
-The next stage of the project will introduce **layout detection**.
-
-Future pipeline:
+Detected layout:
 
 ```
-PDF
- ↓
-Layout Detection
- ↓
-OCR + Text Extraction
- ↓
-Semantic Chunking
- ↓
-LLM Reasoning
- ↓
-Structured Knowledge Output
++--------------------------------+
+| TITLE                          |
++--------------------------------+
+
++--------------------------------+
+| FIGURE                         |
++--------------------------------+
+| CAPTION                        |
++--------------------------------+
+
+| LEFT COLUMN TEXT | RIGHT TEXT |
+| LEFT COLUMN TEXT | RIGHT TEXT |
 ```
 
-Upcoming improvements:
+---
 
-- Figure detection
-- Table detection
-- Caption linking
-- Layout classification
-- Reading order reconstruction
+# Testing
+
+Unit tests are available in:
+
+```
+tests/
+```
+
+Run tests:
+
+```
+pytest tests
+```
+
+---
+
+# Current Capabilities
+
+| Feature               | Status |
+| --------------------- | ------ |
+| Text extraction       | ✅     |
+| OCR fallback          | ✅     |
+| Figure detection      | ✅     |
+| Caption detection     | ✅     |
+| Table detection       | ✅     |
+| Layout classification | ✅     |
+| Reading order         | ✅     |
+| Visualization         | ✅     |
+
+---
+
+# Limitations
+
+Current system does not yet implement:
+
+- semantic chunking
+- figure–caption linking
+- table structure extraction
+- document section hierarchy
+- LLM reasoning
+
+These will be implemented in future stages.
+
+---
+
+# Next Development Steps
+
+Upcoming components:
+
+### Semantic Chunking Agent
+
+Groups layout regions into logical document chunks.
+
+Example:
+
+```
+Chunk 1
+Title + Abstract
+
+Chunk 2
+Figure + Caption
+
+Chunk 3
+Body Paragraphs
+```
+
+### Retrieval Layer
+
+Embedding-based retrieval for RAG pipelines.
+
+### LLM Reasoning Agent
+
+Use structured layout information to answer document queries.
 
 ---
 
 # Long-Term Goal
 
-The final system will function as a **Document Intelligence Pipeline** capable of understanding complex documents such as:
+The final system will act as a **Document Intelligence Engine** capable of understanding:
 
-- Research papers
-- Financial reports
-- Technical documentation
-- Scientific articles
+- research papers
+- financial reports
+- scientific articles
+- technical documentation
 
-The pipeline will transform documents into **structured knowledge usable by AI systems**.
+The goal is to transform documents into **structured knowledge usable by AI systems**.
 
 ---
 
 # Summary
 
-Step 1 successfully implements:
+AgenticDoc currently implements:
 
-- PDF parsing
-- Text extraction
-- Layout-aware bounding boxes
-- JSON structured output
-- Visualization for debugging
+- modular document parsing
+- layout-aware region detection
+- multi-strategy figure detection
+- reading order reconstruction
+- structured JSON outputs
+- layout visualization tools
 
-This provides a strong foundation for building a **complete multimodal document understanding system**.
+This forms the foundation for a **full multimodal document understanding system**.
